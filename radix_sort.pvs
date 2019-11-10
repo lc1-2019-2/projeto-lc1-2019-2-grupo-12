@@ -24,7 +24,7 @@ IMPORTING sorting, mergesort
 
 
 
-% Radixsort mege-sorts a list of elements of type T by the total preorders
+% Radixsort mege-sorts a list of elements of type T by the total preordersexp
 % <= and << 
  radixsort(l : list[T]) : list[T] = merge_sort[T,<<](merge_sort[T,<=](l))
 
@@ -34,7 +34,12 @@ IMPORTING sorting, mergesort
 %%%%% The second question conjectures that radixsort permutes    %%%
 %%%%% the input data, or in other words that it preserves data.  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Lema adicional para a questão 2
+ permutation_permute : LEMMA
+  FORALL(l1, l2, l3 : list[T]) : (permutations(l1, l2) AND permutations(l2, l3)) IMPLIES permutations(l1, l3)
+
  radixsort_permutes : CONJECTURE
   FORALL(l : list[T]): permutations[T](radixsort(l), l)
 
